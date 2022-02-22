@@ -24,7 +24,7 @@ echo "Ready to automation" \
     && wget https://get.docker.com/rootless \
     && chmod +x rootless \
     && sysctl -w kernel.unprivileged_userns_clone=1 \
-    && chown $USER:$USER ./rootless
+    && chown $USER:$USER ./rootless \
     && su -c './rootless' $USER \
     && loginctl enable-linger $USER \
     && gpasswd -a $USER docker \
