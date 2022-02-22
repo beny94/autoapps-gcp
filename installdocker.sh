@@ -7,7 +7,7 @@ OS=$(grep -Po "(?<=^ID=).+" /etc/os-release | sed 's/"//g')
 echo "Ready to automation" \
     && echo "====================" && sleep 2 \
     && apt update -y \
-    && apt upgrade \
+    && apt upgrade -y \
     && echo "update and upgrade done" && sleep 2 \
     && apt install -y curl wget vim apt-transport-https ca-certificates software-properties-common uidmap bash-completion gnupg \
     && echo -ne '\n' | curl -fsSL https://download.docker.com/linux/${OS,}/gpg | apt-key add - \
