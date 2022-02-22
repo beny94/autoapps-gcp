@@ -36,7 +36,7 @@ echo "Ready to automation" \
     && echo -ne '\n' | curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
     && sudo apt-get update && sudo apt-get install google-cloud-sdk gcsfuse \
     && rm -f /home/beny.putra/.bashrc \
-    && cp bashrc /home/beny.putra/.bashrc
+    && cp bashrc /home/beny.putra/.bashrc \
     && echo "done for everything" \
     && sleep 4 \
     && exit 0
