@@ -15,8 +15,10 @@ echo "Ready to automation" \
        "deb [arch=amd64] https://download.docker.com/linux/${OS,} \
        $(lsb_release -cs) \
        stable" \
+    && add-apt-repository ppa:alessandro-strada/ppa -y \
     && echo "OK that works" && sleep 2 \
-    && apt update && apt install -y docker-ce \
+    && apt update && apt install -y docker-ce google-drive-ocamlfuse \
+    && mkdir /home/$USER/GoogleDrive
     && systemctl enable docker \
     && systemctl start docker \
     && curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
@@ -35,8 +37,9 @@ echo "Ready to automation" \
     && echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list \
     && echo -ne '\n' | curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
     && sudo apt-get update && sudo apt-get install google-cloud-sdk gcsfuse \
-    && rm -f /home/beny.putra/.bashrc \
-    && cp bashrc /home/beny.putra/.bashrc \
+    && rm -f /home/$USER/.bashrc \
+    && cp bashrc /home/$USER/.bashrc \
+    && chown $USER:$USER /home/$USER/.bashrc \
     && echo "done for everything" \
     && sleep 4 \
-    && exit 0
+&& exit 0
