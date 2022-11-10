@@ -91,6 +91,11 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+ln(){
+    ls -la | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/) \
+             *2^(8-i));if(k)printf("%0o ",k);print}'
+}
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

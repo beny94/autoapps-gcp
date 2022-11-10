@@ -1,0 +1,5 @@
+RUN AS ROOT
+0 05 * * * /home/beny.putra/backup.sh > /tmp/cronlog 2>&1
+
+RUN AS USER
+20 08 * * * /home/beny.putra/rclone.sh > /tmp/rclonecronlog 2>&1
